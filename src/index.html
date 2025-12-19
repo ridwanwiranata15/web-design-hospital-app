@@ -6,10 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./output.css">
+    <link rel="stylesheet" href="./responsive.css">
 </head>
 
 <body>
-    <aside class="fixed left-0 top-0 h-screen w-64 bg-blue-600 text-white">
+    <aside class="fixed left-0 top-0 h-screen w-64 bg-blue-600 text-white" id="sidebar">
         <div class="flex items-center justify-center h-16 border-b border-white/20">
             <h1 class="text-lg font-semibold">Hospital App</h1>
         </div>
@@ -63,17 +64,10 @@
     </aside>
     <header class="fixed left-64 right-0 top-0 h-16 bg-white shadow-2xl flex items-center justify-between px-6 z-10">
         <div class="relative w-72">
-            <input type="text" placeholder="Search..."
-                class="w-full pl-10 pr-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-2xl bg-gray-200" />
-            <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+            <h1 class="text-2xl text-blue-600 font-bold">RSUD 02 CIAWI</h1>
+            <h1 class="text-2xl text-blue-600 font-bold" id="toggleSidebar"><i class="fa-solid fa-bars"></i></h1>
         </div>
         <div class="flex items-center gap-6">
-            <button class="relative">
-                <i class="fas fa-bell text-gray-600 text-lg"></i>
-                <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs px-1.5 rounded-full">
-                    3
-                </span>
-            </button>
             <div class="relative">
                 <button id="profileBtn" class="flex items-center gap-3 focus:outline-none">
                     <img src="https://i.pravatar.cc/40" class="w-9 h-9 rounded-full object-cover" />
@@ -140,9 +134,15 @@
             </div>
 
         </section>
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-8" id="second-section">
             <div class="lg:col-span-2">
-                <h1>Konten lain</h1>
+                <div class="bg-white rounded-2xl shadow p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="font-semibold text-gray-800">Patien status</h3>
+                        <span class="text-sm text-gray-500">This year</span>
+                    </div>
+                    <canvas id="patienChart" height="120"></canvas>
+                </div>
             </div>
             <div class="">
                 <div class="bg-blue-600 text-white rounded-2xl p-6 w-full max-w-sm shadow-lg">
@@ -180,11 +180,93 @@
                 </div>
             </div>
         </div>
+        <div class="bg-white rounded-2xl shadow p-6 mt-7">
+            <!-- Header -->
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="font-semibold text-gray-800">Appointment Request</h3>
+                <a href="#" class="text-blue-600 text-sm font-medium hover:underline">
+                    See All
+                </a>
+            </div>
+
+            <!-- Table -->
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm">
+                    <tbody>
+
+                        <!-- Row -->
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="py-4">
+                                <div class="flex items-center gap-3">
+                                    <img src="https://i.pravatar.cc/40?img=1"
+                                        class="w-10 h-10 rounded-full object-cover">
+                                    <div>
+                                        <p class="font-medium text-gray-800">Adriana Ferris</p>
+                                        <p class="text-xs text-gray-500">Dermatologist</p>
+                                    </div>
+                                </div>
+                            </td>
+
+                            <td class="text-gray-600">123-456-7890</td>
+                            <td class="text-gray-600">09/28/2023 · 10 AM</td>
+
+                            <td class="text-right">
+                                <div class="flex justify-end gap-2">
+                                    <button
+                                        class="w-8 h-8 flex items-center justify-center rounded-full border border-blue-500 text-blue-500 hover:bg-blue-50">
+                                        <i class="fas fa-check text-xs"></i>
+                                    </button>
+                                    <button
+                                        class="w-8 h-8 flex items-center justify-center rounded-full border border-red-500 text-red-500 hover:bg-red-50">
+                                        <i class="fas fa-times text-xs"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Copy Row -->
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="py-4">
+                                <div class="flex items-center gap-3">
+                                    <img src="https://i.pravatar.cc/40?img=2"
+                                        class="w-10 h-10 rounded-full object-cover">
+                                    <div>
+                                        <p class="font-medium text-gray-800">Isabel Westwood</p>
+                                        <p class="text-xs text-gray-500">Neurologist</p>
+                                    </div>
+                                </div>
+                            </td>
+
+                            <td class="text-gray-600">123-456-7890</td>
+                            <td class="text-gray-600">09/28/2023 · 8 AM</td>
+
+                            <td class="text-right">
+                                <div class="flex justify-end gap-2">
+                                    <button
+                                        class="w-8 h-8 flex items-center justify-center rounded-full border border-blue-500 text-blue-500 hover:bg-blue-50">
+                                        <i class="fas fa-check text-xs"></i>
+                                    </button>
+                                    <button
+                                        class="w-8 h-8 flex items-center justify-center rounded-full border border-red-500 text-red-500 hover:bg-red-50">
+                                        <i class="fas fa-times text-xs"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Tambah row sesuai kebutuhan -->
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
     </main>
-
-
     <script src="https://kit.fontawesome.com/60f3c978d3.js" crossorigin="anonymous"></script>
     <script src="./output.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </body>
 
 </html>

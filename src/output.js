@@ -1,12 +1,16 @@
-const btn = document.getElementById("profileBtn");
-const menu = document.getElementById("profileMenu");
+const toggleBtn = document.getElementById("toggleSidebar");
+const sidebar = document.getElementById("sidebar")
 
-btn.addEventListener("click", () => {
-    menu.classList.toggle("hidden");
-  });
+toggleBtn.addEventListener("click", ()=> {
+  sidebar.classList.toggle("active");
+})
 
-  document.addEventListener("click", (e) => {
-    if (!btn.contains(e.target)) {
-      menu.classList.add("hidden");
+document.addEventListener("click", (e) => {
+    if (
+        sidebar.classList.contains("active") &&
+        !sidebar.contains(e.target) &&
+        !toggleBtn.contains(e.target)
+    ) {
+        sidebar.classList.remove("active");
     }
-  });
+});
